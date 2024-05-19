@@ -68,3 +68,53 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# Reddit App
+
+This is a Reddit app built with React and Redux Toolkit.
+
+## Project Overview
+
+(Provide a brief description of the project, its features, and its purpose)
+
+## Technologies Used
+
+- React
+- Redux Toolkit
+- Jest and Enzyme (for testing)
+
+## Features
+
+(List the main features of your app)
+
+## Future Work
+
+(Describe any additional features or improvements you plan to make in the future)
+
+## Getting Started
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.
+
+## Wireframes
+
+(Include any wireframes or mockups you have for your app)
+
+## Lighthouse Scores
+
+(Include your Lighthouse scores once you have them)
