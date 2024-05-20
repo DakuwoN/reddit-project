@@ -1,5 +1,17 @@
-import { Link as RouterLink } from 'react-router-dom';
 import { Box, List, ListItem, ListItemText, Typography } from '@mui/material';
+import { styled } from '@mui/system';
+import { NavLink as RouterLink } from 'react-router-dom';
+
+const ActiveLink = styled(RouterLink)(({ theme }) => ({
+  color: 'gray',
+  fontWeight: 'bold',
+  '&:hover': {
+    color: 'red',
+  },
+  '&.active': {
+    color: 'red',
+  },
+}));
 
 function Sidebar({ subreddits }) {
   return (
@@ -9,7 +21,7 @@ function Sidebar({ subreddits }) {
       </Typography>
       <List component="nav" aria-label="subreddits">
         {subreddits && subreddits.map((subreddit) => (
-          <ListItem button divider key={subreddit} component={RouterLink} to={`/r/${subreddit}`}>
+          <ListItem button divider key={subreddit} component={ActiveLink} to={`/r/${subreddit}`}>
             <ListItemText primary={subreddit} sx={{textAlign: 'center'}} />
           </ListItem>
         ))}
