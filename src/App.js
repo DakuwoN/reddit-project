@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Grid } from '@mui/material';
 import Header from './components/Header/Header';
 import PostCard from './components/PostCard/PostCard';
@@ -17,6 +17,7 @@ function App() {
           <Grid item xs={8}>
             <Routes>
               <Route path="/r/:subreddit" element={<PostCard />} />
+              <Route path="/" element={<Navigate to="/r/subreddit1" />} /> {/* Default route */}
               <Route path="*" element={<div>Not Found</div>} />
             </Routes>
           </Grid>
