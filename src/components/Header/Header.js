@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, InputBase, Box, Avatar } from '@mui/material';
 import { styled, alpha } from '@mui/system';
+import { useTheme } from '@emotion/react';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Search = styled('div')(({ theme }) => ({
@@ -45,6 +46,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
+  const theme = useTheme();
+  const white = theme.palette.common.white;
+
     return (
       <AppBar position="static" sx={{ bgcolor: 'black'}}>
         <Toolbar>

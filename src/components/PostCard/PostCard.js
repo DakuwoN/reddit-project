@@ -1,7 +1,11 @@
 import { Card, CardContent, CardMedia, Typography, Divider, CardActions, IconButton } from '@mui/material';
 import { ArrowUpward, ArrowDownward, Comment } from '@mui/icons-material';
+import { useParams } from 'react-router-dom';
 
-function PostCard({ title, subreddit, imageUrl, content }) {
+function PostCard({ title, imageUrl, content }) {
+  console.log('Rendering PostCard with props:', { title, imageUrl, content });
+  const { subreddit } = useParams();
+  console.log(subreddit)
   return (
     <Card sx={{ 
         display: 'flex',
@@ -22,7 +26,7 @@ function PostCard({ title, subreddit, imageUrl, content }) {
           {title}
         </Typography>
         <Typography color="text.secondary">
-          {subreddit}
+            {subreddit ? `Posts from ${subreddit}` : 'Select a subreddit from the sidebar'}
         </Typography>
       </CardContent>
       <Divider sx={{borderColor: 'text.primary'}}/>
