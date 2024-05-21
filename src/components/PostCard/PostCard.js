@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Typography, Divider, CardActions, IconButton } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Divider, CardActions, IconButton, Box } from '@mui/material';
 import { ArrowUpward, ArrowDownward, Comment } from '@mui/icons-material';
 import { useParams } from 'react-router-dom';
 import  ReactMarkDown  from 'react-markdown';
@@ -21,9 +21,9 @@ if (!imageUrl) {
     <Card sx={{ 
         display: 'flex',
         flexDirection: 'column',
-        maxWidth: '75%',
+        maxWidth: '90%',
         marginBottom: 2,
-        height: '500px',
+      
         marginTop: 4,
         boxShadow: 3,
         '&:hover': {
@@ -32,12 +32,12 @@ if (!imageUrl) {
         }
     }}>
          
-      <CardContent sx={{flexGrow: 1}}>
+      <CardContent sx={{flexGrow: 1, marginBottom: 2}}>
         <Typography variant="h5" component="div">
           {title}
         </Typography>
         <Typography color="text.secondary">
-            {subreddit ? `Posts from ${subreddit}` : 'Select a subreddit from the sidebar'}
+            {subreddit ? `Posts from ${subreddit}` : 'Select a subreddit from the sidebar or Search for a subreddit to view posts'}
         </Typography>
       </CardContent>
       <Divider sx={{borderColor: 'text.primary'}}/>
@@ -48,23 +48,25 @@ if (!imageUrl) {
             src={imageUrl}
             onError={handleImageError}
             alt={title}
-            style={{width: '100%'}}
+            style={{width: '100%', height: '300px'}}
           />
   )}
       />
       <Divider sx={{borderColor: 'text.primary'}}/>
 
-      <CardContent sx={{flexGrow: 1}}>
-        <ReactMarkDown children={content}/>
-      </CardContent>
+      <CardContent sx={{flexGrow: 1, marginBottom: 2, objectFit: 'cover'}}>
+  <ReactMarkDown children={content || 'No content available for this post.'}/>
+</CardContent>
       
-      <CardActions>
+      <CardActions sx={{display: 'flex', justifyContent: 'space-between'}}>
+        <Box sx={{display: 'flex'}}>
         <IconButton aria-label="upvote" sx={{marginLeft: 1}}>
           <ArrowUpward />
         </IconButton>
-        <IconButton aria-label="downvote" sx={{marginRight: 79}}>
+        <IconButton aria-label="downvote" >
           <ArrowDownward />
         </IconButton>
+        </Box>
         <IconButton aria-label="comment">
           <Comment />
         </IconButton>
