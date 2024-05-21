@@ -39,7 +39,7 @@ function PostCard({ title, imageUrl, content, subreddit: propSubreddit}) {
       <Divider sx={{borderColor: 'text.primary'}}/>
 
       <CardContent sx={{flexGrow: 1}}>
-        <ReactMarkDown source={content}/>
+        <ReactMarkDown children={content}/>
       </CardContent>
       
       <CardActions>
