@@ -17,16 +17,18 @@ function SearchResultsPage() {
     }
   }, [query, dispatch]);
 
-  return data && data.children ? (
-    data.children.map((post) => (
-      <PostCard
-        key={post.data.id}
-        title={post.data.title}
-        subreddit={post.data.subreddit}
-        imageUrl={post.data.url}
-        content={post.data.selftext}
-      />
-    ))
+  return data ? (
+    data.map((post) => {
+      return (
+        <PostCard
+          key={post.id}
+          title={post.title}
+          subreddit={post.subreddit}
+          imageUrl={post.url}
+          content={post.selftext}
+        />
+      );
+    })
   ) : (
     <p>Enter a search query in the header</p>
   );
