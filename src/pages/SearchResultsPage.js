@@ -1,13 +1,14 @@
 // SearchResultsPage.js
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { fetchSearchResults } from './searchSlice';
-import PostCard from './PostCard';
+import { useSearchParams } from 'react-router-dom';
+import { fetchSearchResults } from '../redux/searchSlice';
+import PostCard from '../components/PostCard/PostCard';
 
 function SearchResultsPage() {
   const dispatch = useDispatch();
-  const query = new URLSearchParams(useLocation().search).get('q');
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('q');
   const data = useSelector((state) => state.search.data);
 
   useEffect(() => {

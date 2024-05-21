@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { AppBar, Toolbar, Typography, InputBase, Box, Avatar } from '@mui/material';
 import { styled, alpha } from '@mui/system';
 import { useTheme } from '@emotion/react';
 import SearchIcon from '@mui/icons-material/Search';
+import { fetchSearchResults } from '../../redux/searchSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -46,8 +49,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const [query, setQuery] = useState('');
   const theme = useTheme();
   const white = theme.palette.common.white;
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (query.trim() !== '') {
+      navigate(`/search?q=${query}`);
+    }
+  };
 
     return (
       <AppBar position="static" sx={{ bgcolor: 'black'}}>
@@ -60,15 +73,19 @@ export default function Header() {
               Redddit
             </Typography>
           </Box>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search Reddit…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+          <form onSubmit={handleSearch}>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search Reddit…"
+                inputProps={{ 'aria-label': 'search' }}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </Search>
+          </form>
         </Toolbar>
       </AppBar>
     );
