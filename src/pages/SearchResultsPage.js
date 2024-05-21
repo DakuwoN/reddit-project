@@ -17,13 +17,14 @@ function SearchResultsPage() {
     }
   }, [query, dispatch]);
 
-  return data ? (
-    data.map((post) => (
+  return data && data.children ? (
+    data.children.map((post) => (
       <PostCard
-        key={post.id}
-        title={post.title}
-        imageUrl={post.imageUrl}
-        content={post.content}
+        key={post.data.id}
+        title={post.data.title}
+        subreddit={post.data.subreddit}
+        imageUrl={post.data.url}
+        content={post.data.selftext}
       />
     ))
   ) : (

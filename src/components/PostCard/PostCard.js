@@ -1,11 +1,10 @@
 import { Card, CardContent, CardMedia, Typography, Divider, CardActions, IconButton } from '@mui/material';
 import { ArrowUpward, ArrowDownward, Comment } from '@mui/icons-material';
 import { useParams } from 'react-router-dom';
+import  ReactMarkDown  from 'react-markdown';
 
-function PostCard({ title, imageUrl, content }) {
-  console.log('Rendering PostCard with props:', { title, imageUrl, content });
-  const { subreddit } = useParams();
-  console.log(subreddit)
+function PostCard({ title, imageUrl, content, subreddit: propSubreddit}) {
+  const { subreddit = propSubreddit } = useParams();
   return (
     <Card sx={{ 
         display: 'flex',
@@ -38,10 +37,9 @@ function PostCard({ title, imageUrl, content }) {
         sx={{ width: 1}}
       />
       <Divider sx={{borderColor: 'text.primary'}}/>
+
       <CardContent sx={{flexGrow: 1}}>
-        <Typography variant="body2">
-          {content}
-        </Typography>
+        <ReactMarkDown source={content}/>
       </CardContent>
       
       <CardActions>
