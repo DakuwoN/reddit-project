@@ -19,12 +19,13 @@ function SearchResultsPage() {
 
   return data ? (
     data.map((post) => {
+      console.log(post);
       return (
         <PostCard
           key={post.id}
           title={post.title}
           subreddit={post.subreddit}
-          imageUrl={post.url}
+          imageUrl={post.preview && post.url}
           content={post.selftext}
         />
       );

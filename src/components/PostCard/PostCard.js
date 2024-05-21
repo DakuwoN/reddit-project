@@ -5,6 +5,18 @@ import  ReactMarkDown  from 'react-markdown';
 
 function PostCard({ title, imageUrl, content, subreddit: propSubreddit}) {
   const { subreddit = propSubreddit } = useParams();
+
+  const handleImageError = (event) => {
+  if (event.target.src !== 'https://www.redditinc.com/assets/images/blog/reddit_header_2023-11-28-222257_hthh.png') {
+    event.target.onerror = null;
+    event.target.src = 'https://www.redditinc.com/assets/images/blog/reddit_header_2023-11-28-222257_hthh.png';
+  }
+};
+
+// Don't render the post if there's no image URL
+if (!imageUrl) {
+  return null;
+}
   return (
     <Card sx={{ 
         display: 'flex',
@@ -29,12 +41,16 @@ function PostCard({ title, imageUrl, content, subreddit: propSubreddit}) {
         </Typography>
       </CardContent>
       <Divider sx={{borderColor: 'text.primary'}}/>
-      <CardMedia
-        component="img"
-        height="300"
-        image={imageUrl}
-        alt={title}
+      <CardMedia      
         sx={{ width: 1}}
+        component={() => (
+          <img 
+            src={imageUrl}
+            onError={handleImageError}
+            alt={title}
+            style={{width: '100%'}}
+          />
+  )}
       />
       <Divider sx={{borderColor: 'text.primary'}}/>
 
