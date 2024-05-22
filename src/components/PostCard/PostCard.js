@@ -1,7 +1,8 @@
-import { Card, CardContent, CardMedia, Typography, Divider, CardActions, IconButton, Box } from '@mui/material';
+import { Card, Link, CardContent, CardMedia, Typography, Divider, CardActions, IconButton, Box } from '@mui/material';
 import { ArrowUpward, ArrowDownward, Comment } from '@mui/icons-material';
 import { useParams } from 'react-router-dom';
 import  ReactMarkDown  from 'react-markdown';
+
 
 function PostCard({ title, imageUrl, content, subreddit: propSubreddit}) {
   const { subreddit = propSubreddit } = useParams();
@@ -37,8 +38,17 @@ if (!imageUrl) {
           {title}
         </Typography>
         <Typography color="text.secondary">
-            {subreddit ? `Posts from ${subreddit}` : 'Select a subreddit from the sidebar or Search for a subreddit to view posts'}
-        </Typography>
+  Posts from{' '}
+  {subreddit ? (
+    <Link href={`https://www.reddit.com/r/${subreddit}`} target="_blank" rel="noopener noreferrer">
+      r/{subreddit}
+    </Link>
+  ) : (
+    'Select a subreddit from the sidebar'
+  )}
+</Typography>
+
+     
       </CardContent>
       <Divider sx={{borderColor: 'text.primary'}}/>
       <CardMedia      
@@ -48,7 +58,7 @@ if (!imageUrl) {
             src={imageUrl}
             onError={handleImageError}
             alt={title}
-            style={{width: '100%', height: '300px'}}
+            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
           />
   )}
       />

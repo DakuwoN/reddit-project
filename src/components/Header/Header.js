@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { AppBar, Toolbar, Typography, InputBase, Box, Avatar } from '@mui/material';
+import { AppBar, Toolbar, Typography, InputBase,  Box, Avatar } from '@mui/material';
 import { styled, alpha } from '@mui/system';
 import { useTheme } from '@emotion/react';
 import SearchIcon from '@mui/icons-material/Search';
-import { fetchSearchResults } from '../../redux/searchSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -65,8 +64,10 @@ export default function Header() {
     return (
       <AppBar position="static" sx={{ bgcolor: 'black'}}>
         <Toolbar>
-          <Box mr={7}> {/* Adds margin to the right */}
+          <Box mr={7}> 
+          <Link to="/popular">
             <Avatar alt="Reddit" src="https://play-lh.googleusercontent.com/FpCCoNLOt6LRIY_3NM5Rk_LDN-kFNz0yxdFjm-CYM4XavRQfoQlXxOtgC7abfexIDOE" />
+          </Link>
           </Box>
           <Box mr={37}>
             <Typography variant="h6" noWrap component="div">

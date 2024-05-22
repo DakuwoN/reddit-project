@@ -2,8 +2,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchSubreddit } from './subredditSlice';
-import PostCard from './PostCard';
+import PostCard from '../components/PostCard/PostCard';
+import { fetchSubreddit } from '../redux/subredditSlice';
 
 function SubredditPage() {
   const dispatch = useDispatch();
@@ -11,17 +11,20 @@ function SubredditPage() {
   const data = useSelector((state) => state.subreddit.data);
 
   useEffect(() => {
-    if (subreddit) {
-      dispatch(fetchSubreddit(subreddit));
+    if (subreddit || subreddit === undefined) {
+      dispatch(fetchSubreddit(subreddit || 'popular'));
     }
   }, [subreddit, dispatch]);
 
   return data ? (
-    <PostCard
-      title={data.title}
-      imageUrl={data.imageUrl}
-      content={data.content}
-    />
+    data.map((post, index) => (
+      <PostCard
+        key={index}
+        title={post.title}
+        imageUrl={post.imageUrl}
+        content={post.content}
+      />
+    ))
   ) : (
     <p>Select a subreddit from the sidebar</p>
   );
