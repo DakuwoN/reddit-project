@@ -6,6 +6,7 @@ import  ReactMarkDown  from 'react-markdown';
 
 function PostCard({ title, imageUrl, content, subreddit: propSubreddit}) {
   const { subreddit = propSubreddit } = useParams();
+  
 
   const handleImageError = (event) => {
   if (event.target.src !== 'https://www.redditinc.com/assets/images/blog/reddit_header_2023-11-28-222257_hthh.png') {
@@ -38,15 +39,15 @@ if (!imageUrl) {
           {title}
         </Typography>
         <Typography color="text.secondary">
-  Posts from{' '}
-  {subreddit ? (
-    <Link href={`https://www.reddit.com/r/${subreddit}`} target="_blank" rel="noopener noreferrer">
-      r/{subreddit}
-    </Link>
-  ) : (
-    'Select a subreddit from the sidebar'
-  )}
-</Typography>
+      Posts from{' '}
+      {subreddit ? (
+        <Link href={`https://www.reddit.com/r/${subreddit}`} target="_blank" rel="noopener noreferrer">
+          r/{subreddit}
+        </Link>
+      ) : (
+        'Select a subreddit from the sidebar'
+      )}
+    </Typography>
 
      
       </CardContent>

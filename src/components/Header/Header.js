@@ -5,6 +5,9 @@ import { styled, alpha } from '@mui/system';
 import { useTheme } from '@emotion/react';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate, Link } from 'react-router-dom';
+import { fetchSubreddit } from '../../redux/subredditSlice';
+
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -54,6 +57,12 @@ export default function Header() {
   const white = theme.palette.common.white;
   const navigate = useNavigate();
 
+  const handleLogoClick = () => {
+    dispatch(fetchSubreddit('news'));
+    navigate('/news');
+  
+  }
+
   const handleSearch = (e) => {
     e.preventDefault();
     if (query.trim() !== '') {
@@ -66,7 +75,11 @@ export default function Header() {
         <Toolbar>
           <Box mr={7}> 
           <Link to="/popular">
-            <Avatar alt="Reddit" src="https://play-lh.googleusercontent.com/FpCCoNLOt6LRIY_3NM5Rk_LDN-kFNz0yxdFjm-CYM4XavRQfoQlXxOtgC7abfexIDOE" />
+            <Avatar 
+            alt="Reddit"
+            src="https://play-lh.googleusercontent.com/FpCCoNLOt6LRIY_3NM5Rk_LDN-kFNz0yxdFjm-CYM4XavRQfoQlXxOtgC7abfexIDOE"
+            onClick={handleLogoClick}
+            />
           </Link>
           </Box>
           <Box mr={37}>

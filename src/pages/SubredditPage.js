@@ -12,7 +12,7 @@ function SubredditPage() {
 
   useEffect(() => {
     if (subreddit || subreddit === undefined) {
-      dispatch(fetchSubreddit(subreddit || 'popular'));
+      dispatch(fetchSubreddit(subreddit || 'news'));
     }
   }, [subreddit, dispatch]);
 
