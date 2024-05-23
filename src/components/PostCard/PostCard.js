@@ -2,9 +2,10 @@ import { Card, Link, CardContent, CardMedia, Typography, Divider, CardActions, I
 import { ArrowUpward, ArrowDownward, Comment } from '@mui/icons-material';
 import { useParams } from 'react-router-dom';
 import  ReactMarkDown  from 'react-markdown';
+import { Link as RouterLink } from 'react-router-dom';
 
 
-function PostCard({ title, imageUrl, content, subreddit: propSubreddit}) {
+function PostCard({ title, imageUrl, content, subreddit: propSubreddit, postId}) {
   const { subreddit = propSubreddit } = useParams();
   
 
@@ -78,9 +79,11 @@ if (!imageUrl) {
           <ArrowDownward />
         </IconButton>
         </Box>
+        <RouterLink to={`/r/${subreddit}/${postId}`}>
         <IconButton aria-label="comment">
           <Comment />
         </IconButton>
+        </RouterLink>
       </CardActions>
     </Card>
   );

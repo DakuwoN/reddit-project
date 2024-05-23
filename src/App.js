@@ -6,6 +6,7 @@ import PostCard from './components/PostCard/PostCard';
 import Sidebar from './components/Sidebar/Sidebar';
 import SearchResultsPage from './pages/SearchResultsPage'; // Import SearchResultsPage
 import SubredditPage from './pages/SubredditPage';
+import PostDetailPage from './pages/PostDetailPage';
 
 // Dummy data
 const subreddits = ['subreddit1', 'subreddit2', 'subreddit3'];
@@ -21,7 +22,8 @@ function App() {
               <Route path="/r/:subreddit" element={<PostCard />} />
               <Route path="/search" element={<SearchResultsPage />} /> {/* Add this line */}
               <Route path="/popular" element={<SubredditPage />} />
-              <Route path="/" element={<Navigate to="/r/news" />} /> {/* Default route */}
+              <Route path="/r/:subreddit/:postId" element={<PostDetailPage />} />
+              <Route path="/" element={<Navigate to="/r/popular" />} /> {/* Default route */}
               <Route path="*" element={<div>Not Found</div>} />
             </Routes>
           </Grid>
