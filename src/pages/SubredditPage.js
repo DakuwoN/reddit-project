@@ -8,7 +8,7 @@ import { fetchSubreddit } from '../redux/subredditSlice';
 function SubredditPage() {
   const dispatch = useDispatch();
   const { subreddit } = useParams();
-  const data = useSelector((state) => state.subreddit.data);
+  const data = useSelector((state) => state.subreddit.data[subreddit]);
   
   useEffect(() => {
     if (subreddit || subreddit === undefined) {

@@ -14,13 +14,13 @@ export const fetchSubreddit = createAsyncThunk(
       subreddit: post.data.subreddit,
       postId: post.data.id,
     }));
-    return data;
+    return { subreddit, data };
   }
 );
 
 export const subredditSlice = createSlice({
   name: 'subreddit',
-  initialState: { data: null, status: 'idle', error: null },
+  initialState: { data: {}, status: 'idle', error: null },
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -29,7 +29,7 @@ export const subredditSlice = createSlice({
       })
       .addCase(fetchSubreddit.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.data = action.payload;
+        state.data[action.payload.subreddit] = action.payload.data;
       })
       .addCase(fetchSubreddit.rejected, (state, action) => {
         state.status = 'failed';

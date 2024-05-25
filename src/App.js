@@ -18,7 +18,7 @@ function App() {
         <Grid container spacing={3}>
           <Grid item xs={8}>
             <Routes>
-              <Route path="/subreddit/:subreddit" element={<PostCard />} />
+              <Route path="/subreddit/:subreddit" element={<SubredditPage />} />
               <Route path="/search" element={<SearchResultsPage />} /> {/* Add this line */}
               <Route path="/popular" element={<SubredditPage />} />
               <Route path="/subreddit/:subreddit/:postId" element={<PostDetailPage />} />
