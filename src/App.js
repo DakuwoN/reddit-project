@@ -8,8 +8,7 @@ import SearchResultsPage from './pages/SearchResultsPage'; // Import SearchResul
 import SubredditPage from './pages/SubredditPage';
 import PostDetailPage from './pages/PostDetailPage';
 
-// Dummy data
-const subreddits = ['subreddit1', 'subreddit2', 'subreddit3'];
+const subreddits = ['Sports', 'Food', 'Programming', 'React', 'Redux', 'Travel', 'Art', 'Music', 'Funny'];
 
 function App() {
   return (
@@ -19,11 +18,11 @@ function App() {
         <Grid container spacing={3}>
           <Grid item xs={8}>
             <Routes>
-              <Route path="/r/:subreddit" element={<PostCard />} />
+              <Route path="/subreddit/:subreddit" element={<PostCard />} />
               <Route path="/search" element={<SearchResultsPage />} /> {/* Add this line */}
               <Route path="/popular" element={<SubredditPage />} />
-              <Route path="/r/:subreddit/:postId" element={<PostDetailPage />} />
-              <Route path="/" element={<Navigate to="/r/popular" />} /> {/* Default route */}
+              <Route path="/subreddit/:subreddit/:postId" element={<PostDetailPage />} />
+              <Route path="/" element={<Navigate to="/popular" />} /> {/* Default route */}
               <Route path="*" element={<div>Not Found</div>} />
             </Routes>
           </Grid>

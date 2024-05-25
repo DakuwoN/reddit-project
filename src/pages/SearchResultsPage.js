@@ -19,7 +19,6 @@ function SearchResultsPage() {
 
   return data ? (
     data.map((post) => {
-      console.log(post);
       return (
         <PostCard
           key={post.id}

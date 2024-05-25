@@ -16,10 +16,10 @@ function PostCard({ title, imageUrl, content, subreddit: propSubreddit, postId})
   }
 };
 
-// Don't render the post if there's no image URL
-if (!imageUrl) {
-  return null;
-}
+// // Don't render the post if there's no image URL
+// if (!imageUrl) {
+//   return null;
+// }
   return (
     <Card sx={{ 
         display: 'flex',
@@ -42,7 +42,7 @@ if (!imageUrl) {
         <Typography color="text.secondary">
       Posts from{' '}
       {subreddit ? (
-        <Link href={`https://www.reddit.com/r/${subreddit}`} target="_blank" rel="noopener noreferrer">
+        <Link to={`/subreddit/${subreddit}`} target="_blank" rel="noopener noreferrer">
           r/{subreddit}
         </Link>
       ) : (
@@ -79,7 +79,7 @@ if (!imageUrl) {
           <ArrowDownward />
         </IconButton>
         </Box>
-        <RouterLink to={`/r/${subreddit}/${postId}`}>
+        <RouterLink to={`/${subreddit}/${postId}`}>
         <IconButton aria-label="comment">
           <Comment />
         </IconButton>

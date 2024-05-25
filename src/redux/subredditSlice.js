@@ -6,10 +6,13 @@ export const fetchSubreddit = createAsyncThunk(
   async (subreddit) => {
     const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
     const json = await response.json();
+    
     const data = json.data.children.map((post) => ({
       title: post.data.title,
       imageUrl: post.data.url,
       content: post.data.selftext,
+      subreddit: post.data.subreddit,
+      postId: post.data.id,
     }));
     return data;
   }
