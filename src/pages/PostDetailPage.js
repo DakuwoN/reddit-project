@@ -17,7 +17,6 @@ function PostDetailPage() {
     }
   }, [postStatus, subreddit, postId, dispatch]);
   
-  console.log(post); // Add this line
 
   let content;
 

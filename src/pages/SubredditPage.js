@@ -16,7 +16,6 @@ function SubredditPage() {
     }
   }, [subreddit, dispatch]);
 
-  console.log('Data array before mapping:', data);
 
   return data ? (
     <div>
