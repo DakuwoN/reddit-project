@@ -1,35 +1,46 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchPost } from '../redux/postSlice'; // Adjust the import based on your file structure
-import PostCard from '../components/PostCard/PostCard'; // Import the PostCard component
+import { fetchPostDetails } from '../redux/postDetailsSlice';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 
-function PostDetailPage() {
-  const dispatch = useDispatch();
+function PostDetail() {
   const { subreddit, postId } = useParams();
-  const post = useSelector(state => state.posts.post);
-  const postStatus = useSelector(state => state.posts.status);
-  const error = useSelector(state => state.posts.error);
+  const dispatch = useDispatch();
+  const post = useSelector(state => state.post.post);
 
   useEffect(() => {
-    if (postStatus === 'idle') {
-      dispatch(fetchPost({ subreddit, postId }));
-    }
-  }, [postStatus, subreddit, postId, dispatch]);
-  
+    dispatch(fetchPostDetails({subreddit, postId}));
+  }, [dispatch, subreddit, postId]);
 
-  let content;
-
-  if (postStatus === 'loading') {
-    content = <div>Loading...</div>;
-  } else if (postStatus === 'succeeded') {
-    // Only render the PostCard component if post is not undefined
-    content = post ? <PostCard data={post} /> : <div>No post found</div>;
-  } else if (postStatus === 'failed') {
-    content = <div>{error}</div>;
+  // Check if post is not null before trying to access its properties
+  if (!post) {
+    return <div>Loading...</div>;
   }
 
-  return <div>{content}</div>;
+  // Render the post details...
+  return (
+    <Card>
+      <CardMedia
+        component="img"
+        alt={post.title}
+        height="140"
+        image={post.imageUrl}
+      />
+      <CardContent>
+        <Typography variant="h5" component="div">
+          {post.title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {post.content}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Subreddit: {post.subreddit}
+        </Typography>
+        {/* ...other post properties... */}
+      </CardContent>
+    </Card>
+  );
 }
 
-export default PostDetailPage;
+export default PostDetail;

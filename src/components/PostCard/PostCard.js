@@ -16,11 +16,9 @@ function PostCard({ title, imageUrl, content, subreddit: propSubreddit, postId})
   }
 };
 
-// // Don't render the post if there's no image URL
-// if (!imageUrl) {
-//   return null;
-// }
+
   return (
+    <RouterLink to={`/subreddit/${subreddit}/${postId}`}>
     <Card sx={{ 
         display: 'flex',
         flexDirection: 'column',
@@ -79,13 +77,14 @@ function PostCard({ title, imageUrl, content, subreddit: propSubreddit, postId})
           <ArrowDownward />
         </IconButton>
         </Box>
-        <RouterLink to={`/${subreddit}/${postId}`}>
+        
         <IconButton aria-label="comment">
           <Comment />
         </IconButton>
-        </RouterLink>
+       
       </CardActions>
     </Card>
+    </RouterLink>
   );
 }
 
