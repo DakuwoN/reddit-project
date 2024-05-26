@@ -58,8 +58,8 @@ export default function Header() {
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
-    dispatch(fetchSubreddit('news'));
-    navigate('/news');
+    
+    navigate('/');
   
   }
 
@@ -74,13 +74,13 @@ export default function Header() {
       <AppBar position="static" sx={{ bgcolor: 'black'}}>
         <Toolbar>
           <Box mr={7}> 
-          <Link to="/popular">
+          
             <Avatar 
             alt="Reddit"
             src="https://play-lh.googleusercontent.com/FpCCoNLOt6LRIY_3NM5Rk_LDN-kFNz0yxdFjm-CYM4XavRQfoQlXxOtgC7abfexIDOE"
             onClick={handleLogoClick}
             />
-          </Link>
+          
           </Box>
           <Box mr={37}>
             <Typography variant="h6" noWrap component="div">
