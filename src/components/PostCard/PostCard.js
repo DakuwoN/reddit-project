@@ -58,7 +58,7 @@ function PostCard({ title, imageUrl, content, subreddit: propSubreddit, postId})
             src={imageUrl}
             onError={handleImageError}
             alt={title}
-            style={{width: '100%', height: 'auto', objectFit: 'cover'}}
+            style={{width: '100%', height: '500px', objectFit: 'cover'}}
           />
   )}
       />

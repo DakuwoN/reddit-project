@@ -14,7 +14,6 @@ function PostDetail({ title,  content, subreddit: propSubreddit,  comments = [],
   const { subreddit, postId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const status = useSelector(state => state.postDetails.status); // Get the status from the store (loading, succeeded, failed
 
   const { post = {}, error } = useSelector(state => state.postDetails); // Default to empty object
   const [imageUrl, setImageUrl] = useState(null);
@@ -83,7 +82,7 @@ function PostDetail({ title,  content, subreddit: propSubreddit,  comments = [],
         onError={handleImageError}
         src={imageUrl}
         alt={post?.title || 'Post Image'}
-        sx={{ objectFit: 'cover', maxHeight: 500 }}
+        sx={{ objectFit: 'cover', height: 'auto' }}
       />
     )}
       <Divider sx={{ borderColor: 'text.primary' }} />
