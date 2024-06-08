@@ -10,13 +10,13 @@ import { fetchPostDetails } from '../redux/postDetailsSlice'; // Import fetchPos
 
 
 
-function PostDetail({ title,  content, subreddit: propSubreddit,  comments = [], votes }) {
+function PostDetail({ title,  content}) {
   const { subreddit, postId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const { post = {}, error } = useSelector(state => state.postDetails); // Default to empty object
   const [imageUrl, setImageUrl] = useState(null);
+ 
 
   useEffect(() => {
     dispatch(fetchPostDetails({ subreddit, postId }));
@@ -63,17 +63,7 @@ function PostDetail({ title,  content, subreddit: propSubreddit,  comments = [],
             'Select a subreddit from the sidebar'
           )}
         </Typography>
-        <Typography color="text.secondary">
-          Votes: {votes}
-        </Typography>
-        <Typography color="text.secondary">
-          Comments: {comments ? comments.length : 0}
-        </Typography>
-        {comments && comments.map((comment, index) => (
-  <Typography key={index} color="text.secondary">
-    {comment}
-  </Typography>
-))}
+       
       </CardContent>
       <Divider sx={{ borderColor: 'text.primary' }} />
       {imageUrl && (
@@ -87,17 +77,10 @@ function PostDetail({ title,  content, subreddit: propSubreddit,  comments = [],
     )}
       <Divider sx={{ borderColor: 'text.primary' }} />
       <CardContent sx={{ flexGrow: 1, marginBottom: 2, objectFit: 'cover' }}>
-        <ReactMarkDown children={content || 'No content available for this post.'} />
+        <ReactMarkDown children={post.selftext || 'No content available for this post.'} />
       </CardContent>
       <CardContent>
-        <Typography variant="h6" component="div">
-          Comments
-        </Typography>
-        {comments.map((comment, index) => (
-          <Typography key={index} color="text.secondary">
-            {comment}
-          </Typography>
-        ))}
+        
       </CardContent>
       <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box sx={{ display: 'flex' }}>
