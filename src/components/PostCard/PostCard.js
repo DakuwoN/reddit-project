@@ -16,6 +16,11 @@ function PostCard({ title, imageUrl, content, subreddit: propSubreddit, postId})
   }
 };
 
+// helper function for the max words in the post
+  function limitWords(text, maxWords) {
+    return text.split(" ").slice(0, maxWords).join(" ");
+  }
+
 
   return (
     <RouterLink to={`/subreddit/${subreddit}/${postId}`}>
@@ -65,7 +70,7 @@ function PostCard({ title, imageUrl, content, subreddit: propSubreddit, postId})
       <Divider sx={{borderColor: 'text.primary'}}/>
 
       <CardContent sx={{flexGrow: 1, marginBottom: 2, objectFit: 'cover'}}>
-  <ReactMarkDown children={content || 'No content available for this post.'}/>
+  <ReactMarkDown children={limitWords(content, 50) || 'No content available for this post.'}/>
 </CardContent>
       
       <CardActions sx={{display: 'flex', justifyContent: 'space-between'}}>
