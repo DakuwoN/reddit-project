@@ -79,6 +79,7 @@ export default function Header() {
             alt="Reddit"
             src="https://play-lh.googleusercontent.com/FpCCoNLOt6LRIY_3NM5Rk_LDN-kFNz0yxdFjm-CYM4XavRQfoQlXxOtgC7abfexIDOE"
             onClick={handleLogoClick}
+            sx={{ cursor: 'pointer'}}
             />
           
           </Box>
