@@ -34,6 +34,7 @@ The Reddit App is a web application that allows users to browse and search for p
 - CI/CD Workflow
 - Progressive App
 - Lighthouse score of 90+ 
+- Handle Rate limit (Reddit JSON API 10 queries per min.)
 
 ## Getting Started
 
