@@ -1,5 +1,6 @@
 {
   "name": "reddit-client",
+  
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,6 +18,7 @@
     "@types/react-dom": "^18.0.0",
     "enzyme": "^3.11.0",
     "framer-motion": "^11.2.4",
+    "gh-pages": "^6.1.1",
     "jest": "^27.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -32,7 +34,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "homepage": "https://dakuwon.github.io/reddit-client",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "parser": "@babel/eslint-parser",
